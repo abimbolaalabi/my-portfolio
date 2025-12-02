@@ -101,7 +101,7 @@ const MOCK_DATA = {
         "ErrandHive is a peer-to-peer platform connecting people who need errands done with verified local runners. It simplifies everyday tasks through real-time matching, secure payments, and trusted profiles — saving users time while creating flexible income opportunities.",
       tags: ["React", "Context-Api"],
       image: "/ErndHive.png",
-      link: "https://real-estate-starter-main-lyart.vercel.app/",
+      link: "https://errand-hive.vercel.app",
     },
     {
       title: "HomeLand",
