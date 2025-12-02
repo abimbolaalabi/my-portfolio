@@ -1,4 +1,3 @@
-// src/components/Section.jsx
 import React from "react";
 
 const Section = ({ id, title, icon: Icon, children, className = "" }) => (

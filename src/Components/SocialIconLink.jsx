@@ -1,5 +1,3 @@
-// src/components/SocialIconLink.jsx
-
 import React from "react";
 
 const SocialIconLink = ({ href, Icon, label }) => (

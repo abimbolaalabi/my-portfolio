@@ -19,7 +19,7 @@ const Header = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
 
-          {/* Logo with ancient scroll effect */}
+       
           <motion.div
             className="text-2xl font-extrabold text-indigo-600 dark:text-indigo-400 cursor-pointer"
             onClick={() => scrollToSection("home")}
@@ -41,7 +41,7 @@ const Header = () => {
             Alabi <span className="text-gray-900 dark:text-white">Ibrahim</span>
           </motion.div>
 
-          {/* Desktop Menu with classic wave animation */}
+         
           <motion.div 
             className="hidden md:flex space-x-8"
             initial={{ opacity: 0 }}
@@ -69,7 +69,7 @@ const Header = () => {
                 whileTap={{ scale: 0.9 }}
               >
                 {item}
-                {/* Ancient underline effect */}
+                
                 <motion.span 
                   className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 dark:bg-indigo-400"
                   initial={{ width: 0 }}
@@ -80,7 +80,7 @@ const Header = () => {
             ))}
           </motion.div>
 
-          {/* Mobile Menu Button with ancient spinning effect */}
+    
           <motion.button
             className="md:hidden text-gray-800 dark:text-gray-200 text-2xl relative"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -121,7 +121,6 @@ const Header = () => {
           </motion.button>
         </div>
 
-        {/* Mobile Menu with ancient parchment scroll effect */}
         <AnimatePresence mode="wait">
           {menuOpen && (
             <motion.div

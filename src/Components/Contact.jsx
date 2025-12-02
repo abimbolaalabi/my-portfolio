@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Section from "./Section";
 import MOCK_DATA from "../Mock_DATA";
 import emailjs from "emailjs-com";
 import { motion } from "framer-motion";
 
-// Animation Variants
+
 const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -171,10 +172,10 @@ const Contact = () => {
             </motion.div>
 
             <div className="flex flex-col md:flex-row justify-between items-center mt-12 py-10 border-t border-gray-800">
-                <div className="text-left mb-6 md:mb-0">
+                <div className="flex items-center space-x-2">
                     <h3 className="text-lg font-semibold text-white">Currently Available</h3>
+                    <ArrowRight className="w-5 h-5 text-indigo-400 animate-bounce" />
                 </div>
-
                 <LiveClock />
             </div>
         </Section>

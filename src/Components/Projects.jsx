@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Section from "./Section";
 import MOCK_DATA from "../Mock_DATA";
 
-// Motion variants for obvious animation
+
 const cardVariants = {
   hidden: { opacity: 0, y: 50, scale: 0.9 },
   visible: { 

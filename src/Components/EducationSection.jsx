@@ -1,4 +1,4 @@
-import React from "react";
+
 import { GraduationCap } from "lucide-react";
 import Section from "./Section";
 import MOCK_DATA from "../Mock_DATA";

@@ -91,8 +91,8 @@ const About = () => (
       </motion.p>
 
     <motion.a
-  href="public/ibrahim.pdf"
-  download
+  href="https://drive.google.com/file/d/1jkoF9qWhRs6rDlvX0tV3lQywFLlPsw9h/view?usp=sharing"
+
   className="inline-block px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-lg text-lg"
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
