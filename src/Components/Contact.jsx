@@ -35,6 +35,7 @@ const Contact = () => {
                     name: formData.name,
                     email: formData.email,
                     message: formData.message,
+                    time: new Date().toLocaleString(),
                 },
                 "Qvu4JmVw32vGmSYww"
             );
