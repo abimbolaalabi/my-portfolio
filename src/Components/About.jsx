@@ -91,7 +91,7 @@ const About = () => (
       </motion.p>
 
     <motion.a
-  href="https://drive.google.com/file/d/1jkoF9qWhRs6rDlvX0tV3lQywFLlPsw9h/view?usp=sharing"
+  href="https://drive.google.com/file/d/1naXa1bKoWeI_p-Kra0L0rCn9F8DNIK1T/view?usp=drive_link"
 
   className="inline-block px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-lg text-lg"
   initial={{ opacity: 0, y: 20 }}
