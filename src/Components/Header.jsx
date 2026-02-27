@@ -6,10 +6,23 @@ const Header = () => {
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false);
-    }
+    if (!section) return;
+
+    // Dynamically get the current height of the fixed header
+    const header = document.querySelector("header");
+    const headerHeight = header ? header.offsetHeight : 0;
+
+    const elementPosition = section.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+
+    // Delay closing the menu slightly so the scroll can start
+    // before the menu disappears (prevents layout shift issues)
+    setTimeout(() => setMenuOpen(false), 150);
   };
 
   const navItems = ["Home", "About", "Skills", "Education", "Projects", "Contact"];
@@ -18,8 +31,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 shadow-md">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-
-       
+          {/* Logo */}
           <motion.div
             className="text-2xl font-extrabold text-indigo-600 dark:text-indigo-400 cursor-pointer"
             onClick={() => scrollToSection("home")}
@@ -29,20 +41,20 @@ const Header = () => {
               type: "spring",
               stiffness: 100,
               damping: 15,
-              delay: 0.1
+              delay: 0.1,
             }}
             whileHover={{
               scale: 1.05,
               rotateZ: [0, -1, 1, -1, 0],
-              transition: { duration: 0.5 }
+              transition: { duration: 0.5 },
             }}
             whileTap={{ scale: 0.95 }}
           >
             Alabi <span className="text-gray-900 dark:text-white">Ibrahim</span>
           </motion.div>
 
-         
-          <motion.div 
+          {/* Desktop Menu */}
+          <motion.div
             className="hidden md:flex space-x-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -59,18 +71,17 @@ const Header = () => {
                   type: "spring",
                   stiffness: 150,
                   damping: 12,
-                  delay: 0.4 + index * 0.1
+                  delay: 0.4 + index * 0.1,
                 }}
                 whileHover={{
                   scale: 1.1,
                   y: -3,
-                  transition: { type: "spring", stiffness: 400 }
+                  transition: { type: "spring", stiffness: 400 },
                 }}
                 whileTap={{ scale: 0.9 }}
               >
                 {item}
-                
-                <motion.span 
+                <motion.span
                   className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 dark:bg-indigo-400"
                   initial={{ width: 0 }}
                   whileHover={{ width: "100%" }}
@@ -80,7 +91,7 @@ const Header = () => {
             ))}
           </motion.div>
 
-    
+          {/* Mobile Menu Toggle */}
           <motion.button
             className="md:hidden text-gray-800 dark:text-gray-200 text-2xl relative"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -91,7 +102,7 @@ const Header = () => {
             whileHover={{
               scale: 1.2,
               rotate: 180,
-              transition: { duration: 0.5 }
+              transition: { duration: 0.5 },
             }}
             whileTap={{ scale: 0.8 }}
           >
@@ -105,14 +116,14 @@ const Header = () => {
               </motion.span>
             ) : (
               <motion.span
-                animate={{ 
+                animate={{
                   rotate: [0, 10, -10, 0],
-                  scale: [1, 1.1, 1, 1.1]
+                  scale: [1, 1.1, 1, 1.1],
                 }}
-                transition={{ 
+                transition={{
                   duration: 2,
                   repeat: Infinity,
-                  repeatType: "loop"
+                  repeatType: "loop",
                 }}
               >
                 ☰
@@ -121,36 +132,37 @@ const Header = () => {
           </motion.button>
         </div>
 
+        {/* Mobile Menu Dropdown */}
         <AnimatePresence mode="wait">
           {menuOpen && (
             <motion.div
               className="md:hidden flex flex-col space-y-4 pb-4 mt-2 bg-white/95 dark:bg-gray-900/95 rounded-b-lg shadow-lg backdrop-blur-lg"
-              initial={{ 
+              initial={{
                 opacity: 0,
                 height: 0,
                 scaleY: 0,
-                transformOrigin: "top"
+                transformOrigin: "top",
               }}
-              animate={{ 
+              animate={{
                 opacity: 1,
                 height: "auto",
-                scaleY: 1
+                scaleY: 1,
               }}
-              exit={{ 
+              exit={{
                 opacity: 0,
                 height: 0,
-                scaleY: 0
+                scaleY: 0,
               }}
-              transition={{ 
+              transition={{
                 type: "spring",
                 stiffness: 200,
-                damping: 25
+                damping: 25,
               }}
             >
               {navItems.map((item, index) => (
                 <motion.button
                   key={item}
-                  className="text-left text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition font-medium px-4 py-2 overflow-hidden group"
+                  className="text-left text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition font-medium px-4 py-2 overflow-hidden group relative"
                   onClick={() => scrollToSection(item.toLowerCase())}
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -159,12 +171,12 @@ const Header = () => {
                     type: "spring",
                     stiffness: 150,
                     damping: 15,
-                    delay: index * 0.1
+                    delay: index * 0.1,
                   }}
                   whileHover={{
                     x: 20,
                     backgroundColor: "rgba(99, 102, 241, 0.1)",
-                    transition: { duration: 0.3 }
+                    transition: { duration: 0.3 },
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -188,8 +200,8 @@ const Header = () => {
           )}
         </AnimatePresence>
       </nav>
-      
-      {/* Ancient ripple effect for menu */}
+
+      {/* Backdrop Overlay */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
